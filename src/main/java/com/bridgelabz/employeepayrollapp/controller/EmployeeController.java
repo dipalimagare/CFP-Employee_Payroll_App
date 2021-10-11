@@ -1,6 +1,7 @@
 package com.bridgelabz.employeepayrollapp.controller;
 
 
+import com.bridgelabz.employeepayrollapp.dto.*;
 import com.bridgelabz.employeepayrollapp.model.*;
 import com.bridgelabz.employeepayrollapp.service.*;
 import org.springframework.beans.factory.annotation.*;
@@ -21,33 +22,33 @@ public class EmployeeController {
     private EmployeePayrollService employeePayrollService;
 
     @GetMapping(value = "/employees")
-    public List<Employee> employees(){
+    public List<EmployeeEntity> employees(){
         return EmployeePayrollService.employees();
     }
 
     @GetMapping(value = "/get-employee-by-id")
-    public Employee getEmployeeById(@RequestParam int id){
+    public EmployeeEntity getEmployeeById(@RequestParam int id){
         return employeePayrollService.getEmployeeById(id);
     }
 
     @GetMapping(value = "/get-employee-by-Name")
-    public Employee getStudentByName(@RequestParam String name) {
+    public EmployeeEntity getStudentByName(@RequestParam String name) {
         return employeePayrollService.getEmployeeByName(name);
     }
 
     @GetMapping(value = "/get-employee-by-salary")
-    public Employee getEmployeeBySalary(@RequestParam long salary){
+    public EmployeeEntity getEmployeeBySalary(@RequestParam long salary){
         return employeePayrollService.getEmployeeBySalary(salary);
     }
 
     @PostMapping(value = "/employee")
-    public Employee addStudent(@RequestBody Employee employeeEntity) {
-        return employeePayrollService.addEmployee(employeeEntity);
+    public EmployeeEntity addStudent(@RequestBody EmployeeDTO employeeDTO) {
+        return employeePayrollService.addEmployee(employeeDTO);
     }
 
     @PutMapping(value = "/employee")
-    public Employee updateEmployee(@RequestBody Employee employeeEntity) {
-        return employeePayrollService.updateEmployee(employeeEntity);
+    public EmployeeEntity updateEmployee( @PathVariable int id, @RequestBody EmployeeDTO employeeDTO) {
+        return employeePayrollService.updateEmployee(id, employeeDTO);
     }
 
     @DeleteMapping(value = "/employee")

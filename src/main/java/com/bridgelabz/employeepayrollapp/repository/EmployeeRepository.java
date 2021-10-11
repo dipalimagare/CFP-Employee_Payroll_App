@@ -7,9 +7,9 @@ import org.springframework.stereotype.*;
 import java.util.*;
 
 @Repository
-public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
+public interface EmployeeRepository extends JpaRepository<EmployeeEntity, Integer> {
 
-    Optional<Employee> findByName(String name);
-
-    Optional<Employee> findBySalary(long salary);
+    Optional<EmployeeEntity> findByfirstName(String name);
+    Optional<EmployeeEntity> findBylastName(String name);
+    Optional<EmployeeEntity> findBySalary(long salary);
 }

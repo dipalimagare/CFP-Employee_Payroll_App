@@ -7,4 +7,13 @@ import lombok.*;
 public class EmployeeDTO {
     private String name;
     private long salary;
+    private int id;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
 }
